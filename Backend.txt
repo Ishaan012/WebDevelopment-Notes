@@ -1,0 +1,172 @@
+TO USE BODY PARSER- MUST ADD TO EVERY CODE.
+const express=require("express");
+const ejs=require("ejs");
+const bodyParser= require("body-parser");
+const app=express();
+app.use(bodyParser.urlencoded({extended:true}));
+
+TO LISTEN TO A PORT.
+app.listen(3000,function(req,res){
+    console.log("Server running at port 3000");
+});
+
+
+RESPONDING WITH A TEXT AND FILE.
+app.get("/",function(req, res){
+    res.send("...");
+    res.sendFile(__dirname+"/filename");
+});
+
+
+
+CALLING POST REQUEST.
+app.post("/",function(req,res){
+..
+..
+});
+
+TO GET AND STORE ENTERED DATA
+app.post("/",function(req,res){
+
+    var n1=Number(req.body.num1); //Stores data inside num1 into n1
+    var n2=Number(req.body.num2);
+
+    var sum=n1+n2;
+
+    res.send("The sum of the entered numbers is "+sum);
+});
+
+
+const object={
+                name:"Ishaan",
+                favouriteFood:"Paneer"
+            }
+
+ console.log(weatherData);
+ console.log(JSON.stringify(object));
+
+
+ACCESSING DATA FROM AN API
+
+ https.get(url,function(response){
+        response.on("data",function(data){
+            
+		const weatherData=JSON.parse(data);       //To store response JSON data to a constant
+            const temp=weatherData.main.temp;
+            const weatherDesc=weatherData.weather[0].description;
+            const icon=weatherData.weather[0].icon;
+            const iconurl="http://openweathermap.org/img/wn/"+icon +"@2x.png";
+
+            res.write("<h1>The temperature in "+city+" is "+temp+ " degrees celcius.</h1>");
+            res.write("<h1>The weather is currently "+weatherDesc+".</h1>");
+            res.write("<img src="+iconurl+">");
+            res.send();
+            
+        });
+    });
+
+
+
+TO ADD FILES TO GITHUB
+git add filename/.(to select all files present in the directory)
+git status (To see the current status of the commit)
+git commit -m "commit message"
+
+
+TO REMOVE FILES FROM THE STAGING AREA BEFORE COMMITTING FILES TO GITHUB
+git rm --cached -r .
+
+
+BRANCHING 
+git branch branch-name
+git branch   //To see available branches
+git checkout branch-name  //To cd to branch
+git checkout master  //To cd to master branch
+git merge branch-name  //To merge branch with master branch
+
+git push origin master -u //To push changes to github
+
+
+USING EJS WITH EXPRESS
+
+const express=require('express');
+let app=express();
+app.set('view engine','ejs');
+
+
+
+app.set('view engine','ejs');  //Adds ejs module
+app.use(express.static("public"));  //Allows static files to load on a server
+
+
+CREATING OWN MODULE
+
+const date=require(__dirname+"/date.js"); // In app.js
+let day=date();  //Calls the function from date.js module
+
+
+module.exports= getDate;  //In date.js
+function getDate(){
+..
+..
+..
+return day;
+}
+
+ANOTHER WAY TO DECLARE AND LET MODULE DO MULTIPLE TASKS
+
+exports.getDate=function(){
+..
+..
+return date;
+};
+
+exports.getDay=function(){
+..
+..
+..
+return day;
+};
+
+
+ADDING TEMPLATE FILES
+<%-include("fileName")-%>
+
+LOOP THROUGH AN ARRAY
+var sampleArray=['a','b','c'];
+
+letterArray.forEach(function(sample){
+..
+});
+
+TO USE DYNAMIC URL
+
+app.get("/posts/:postName",function(req,res){
+console.log(req.params.postName);
+});
+
+//Solving problem of case and spacing for title
+_.lowerCase(parameterName);
+
+SAMPLE:
+app.get("/posts/:postName",function(req,res){
+  const requestedTitle=_.lowerCase(req.params.postName);
+ 
+  posts.forEach(function(post){ 
+    const storedTitle=_.lowerCase(post.title); 
+    if(requestedTitle===storedTitle)
+    console.log("Match Found");
+    else
+    console.log("Match not found");
+  });
+});
+
+TRUNCATING HTML TEXT TO LIMITED NUMBER OF WORDS
+text.substring(0, 100) + "...";
+
+TO REDIRECT
+res.redirect("route");
+
+MONGODB 
+C:\Program Files\MongoDB\Server\6.0\data\
+

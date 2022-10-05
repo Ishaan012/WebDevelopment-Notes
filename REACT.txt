@@ -1,0 +1,27 @@
+IMPORTING REACT
+import React from "react";
+import ReactDOM from "react-dom";
+
+ReactDOM.render(What to display,Where to display);
+
+ReactDOM.render(
+  <div>
+    <Heading></Heading>
+    <List></List>
+  </div>,
+  document.getElementById("root")
+);
+
+USING REACT COMPONENTS
+
+import Header from "./header";
+
+INSIDE header.JSX
+
+import React from "react";  
+
+function Heading() {
+  return <h1>My Favourite Foods</h1>;
+}
+
+export default Heading;

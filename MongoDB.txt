@@ -1,0 +1,74 @@
+CRUD OPERATIONS
+
+COMMON OPERATIONS
+
+use collectionName  //Creates collection
+show dbs
+show collections
+
+CREATE:
+db.products.insertOne({key:value,key:value}) //Inserts into collection
+db  //Allows collection to implement CRUD operations
+
+
+
+FIND OPERATION //Taking products as Collection name
+
+db.collectionName.find(query,projection)  //Projections are used to specify what we specific fields we want back as result.
+
+db.products.find()  //Displays the complete collection
+db.products.find({name: "Pencil"}) //Displays record having name as Pencil
+db.products.find({price:{$gt:1}})  //Displays record having price greater than 1
+
+db.products.find({_id:1},{name:1})        //Will return name and id is returned by default as it was search query
+db.products.find({_id:1},{name:1, _id:0}) //Will only return name(1=true, 0=false)
+
+
+UPDATE OPERATION
+
+db.products.updateOne({_id:1},{$set:{stock:32}})
+
+DELETE OPERATION
+
+db.products.deleteOne({_id:2})  //Will delete record having _id equal to 2
+
+
+RELATIONSHIPS IN MONGODB
+
+ONE TO MANY (A single product has multiple reviews)
+db.products.insert(
+    {
+        _id:2,
+        name: "Pencil",
+        price: 1.5,
+        stock: 20,
+        reviews:[
+            {
+                authorName: "Jack",
+                rating: 5,
+                review: "Best pen ever"
+            },
+            {
+                authorName: "John",
+                rating: 4.5,
+                review: "Worth the buy"
+            }
+        ]
+    }
+)
+
+
+
+
+QUERY OPERATORS
+$eq  //=
+$gt  //>
+$lt  //<
+$gte //> or =
+$lte //< or =
+$in  //Matches any of the values specified in an array
+$ne  //Matches all the values that are not equal to a specified value
+$nin //Matches none of the values specified in an array
+
+
+db.dropDatabase()  //Drops database
